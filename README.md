@@ -33,7 +33,20 @@ main.js
 
 game.js
 
--
+- buildCanvas
+- score
+
+- game.prototype.function loop {
+  update score
+  objectToAvoidArray 
+  objectToAvoid.filter
+  draw objects / character
+  collision
+}
+- handleKeySpaceBar
+
+- objectsToAvoid.prototype.clear
+
 
 character.js
 
@@ -42,9 +55,10 @@ character.js
   y-position
   size
 }
-- Character.prototype.update
-- Character.prototype.render
-- Character.prototype.position
+- character.prototype.update
+- character.prototype.render
+- character.prototype.position
+- character.prototype.jump
 
 
 objectsToAvoid.js
@@ -54,26 +68,36 @@ objectsToAvoid.js
   y-position ("fixed")
   size
   speed
-  direction
 }
 
 - objectsToAvoid.prototype.update
 - objectsToAvoid.prototype.render
 - objectsToAvoid.prototype.position
 - objectsToAvoid.prototype.direction
-- 
+
 
  
 ## States y States Transitions
 Definition of the different states and their transition (transition functions)
 
-- splashScreen
+splashScreen
 
-buildSplash()
+- destroyGameOver(if)
+- buildSplash()
+- addEventListener
 
-- gameScreen
-- gameoverScreen
+gameScreen
 
+- destroySplash
+- create new game
+- game.start
+
+
+gameoverScreen
+
+- destroyGame()
+- buildGameOver()
+- addEventListener( if splashScreen, else starGame) 
 
 ## Task
 Task definition in order of priority
@@ -98,6 +122,8 @@ Task definition in order of priority
 - ObjectsToAvoid - x and y directions
 - Game - build collision between ObjectsToAvoid and Player
 - Game - seconds counter
+- Game - game over
+
 
 
 
