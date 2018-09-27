@@ -23,19 +23,13 @@ Classes and methods definition.
 
 main.js
 
--buildDom()
-
--buildGame()
-
--destroySplash()
-
--buildGame()
-
--destroyGame()
-
--buildGameOver()
-
--destroyGameOver()
+- buildDom()
+- buildGame()
+- destroySplash()
+- buildGame()
+- destroyGame()
+- buildGameOver()
+- destroyGameOver()
 
 game.js
 
