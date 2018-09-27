@@ -24,11 +24,17 @@ Classes and methods definition.
 main.js
 
 -buildDom()
+
 -buildGame()
+
 -destroySplash()
+
 -buildGame()
+
 -destroyGame()
+
 -buildGameOver()
+
 -destroyGameOver()
 
 game.js
@@ -38,7 +44,7 @@ game.js
 character.js
 
 - function createCharacter(){
-  x-position
+  x-position ("fixed")
   y-position
   size
 }
@@ -49,8 +55,21 @@ character.js
 
 objectsToAvoid.js
 
-- fnction createObjectToAvoid()
+- function createObjectToAvoid(){
+  x-position 
+  y-position ("fixed")
+  size
+  speed
+  direction
+}
 
+- objectsToAvoid.prototype.update
+- objectsToAvoid.prototype.render
+- objectsToAvoid.prototype.position
+- objectsToAvoid.prototype.direction
+- 
+
+ 
 ## States y States Transitions
 Definition of the different states and their transition (transition functions)
 
