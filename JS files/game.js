@@ -8,7 +8,6 @@ function Game(parent) {
   self.onGameOverCallback = null;
 
   self._init();
-  self._startLoop();
 }
 
 Game.prototype._init = function () {
@@ -16,11 +15,7 @@ Game.prototype._init = function () {
 
   self.gameElement = buildDom(`
     <main class="game container">
-      <header class="game__header">
-        <div class="lives">
-          <span class="label">Lives:</span>
-          <span class="value"></span>
-        </div>
+      <header class="game__header"> 
         <div class="score">
           <span class="label">Score:</span>
           <span class="value"></span>

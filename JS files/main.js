@@ -46,16 +46,7 @@ function main() {
   };
 
   function buildGame() {
-    game = buildDom(`
-    <main class="splash container">
-      <h1 class="splash__title">Game Is On</h1>
-      <button>End game</button>
-    </main>
-  `);
-  mainContainerElement.appendChild(game);
-
-  gameButton = document.querySelector('button');
-  gameButton.addEventListener('click', handleGameOver);
+    game = new Game(mainContainerElement);
 }
 
 
