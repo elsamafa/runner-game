@@ -35,26 +35,23 @@ game.js
 
 - buildCanvas
 - score
-
-- game.prototype.function loop {
-  update score
-  objectToAvoidArray 
-  objectToAvoid.filter
-  draw objects / character
-  collision
-}
+- game.prototype.function loop 
+  - update score
+  - objectToAvoidArray 
+  - objectToAvoid.filter
+  - draw objects / character
+  - collision
 - handleKeySpaceBar
-
 - objectsToAvoid.prototype.clear
 
 
 character.js
 
-- function createCharacter(){
-  x-position ("fixed")
-  y-position
-  size
-}
+- function createCharacter()
+ - x-position ("fixed")
+ - y-position
+ - size
+
 - character.prototype.update
 - character.prototype.render
 - character.prototype.position
@@ -63,12 +60,11 @@ character.js
 
 objectsToAvoid.js
 
-- function createObjectToAvoid(){
-  x-position 
-  y-position ("fixed")
-  size
-  speed
-}
+- function createObjectToAvoid()
+ - x-position 
+ - y-position ("fixed")
+ - size
+ - speed
 
 - objectsToAvoid.prototype.update
 - objectsToAvoid.prototype.render

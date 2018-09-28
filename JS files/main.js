@@ -12,44 +12,56 @@ function main() {
 
   // -- Splash
   var splashElement = null;
-  var splashButton = null;
 
-  var handleSplashClick = function () {
-    destroySplash();
-    buildGame();
+  var handleSplashSpace = function (e) {
+    if(e.keyCode == 32){
+      destroySplash();
+      buildGame();
+    }
   }
 
   function buildSplash() {
     splashElement = buildDom(`
       <main class="splash container">
-        <h1 class="splash__title">Canvas epic game</h1>
-        <button>Start</button>
+        <h1 class="splash__title">Runner Game</h1>
+        <h2>Press Spacebar to begin</h2>
       </main>
     `)
     mainContainerElement.appendChild(splashElement);
+    document.body.addEventListener('keyup',handleSplashSpace)
     
-    splashButton = document.querySelector('button');
-    splashButton.addEventListener('click', handleSplashClick)
-
   }
+
   function destroySplash() {
-    splashButton.removeEventListener('click', handleSplashClick);
+    document.body.removeEventListener('keyup', handleSplashSpace);
     splashElement.remove();
   }
 
   // -- Game
   var game = null;
+  var gameButton=null;
   var handleGameOver = function () {
     destroyGame();
-    buildGameover(game.score);
+    buildGameover();
   };
 
   function buildGame() {
-    game = new Game(mainContainerElement);
-    game.onOver(handleGameOver);
-  }
+    game = buildDom(`
+    <main class="splash container">
+      <h1 class="splash__title">Game Is On</h1>
+      <button>End game</button>
+    </main>
+  `);
+  mainContainerElement.appendChild(game);
+
+  gameButton = document.querySelector('button');
+  gameButton.addEventListener('click', handleGameOver);
+}
+
+
   function destroyGame() {
-    game.destroy();
+    gameButton.removeEventListener('click', handleGameOver);
+    game.remove();
   }
 
   // -- Gameover
@@ -82,6 +94,7 @@ function main() {
     gameoverButton.removeEventListener('click', handleGameoverClick);
     gameoverElement.remove();
   }
+
 
   buildSplash();
 }
