@@ -64,7 +64,7 @@ Game.prototype._startLoop = function () {
   var self = this;
 
   self.character = new Character(self.canvasElement);
-
+  self.obstacle = new Obstacles(self.canvasElement);
   function loop() {
     self._renderAll();
   }
@@ -72,13 +72,9 @@ Game.prototype._startLoop = function () {
   requestAnimationFrame(loop);
 }
 
-
-
-
-
 Game.prototype._renderAll = function ()  {
   var self = this;
 
   self.character.render();
-
+  self.obstacle.render();
 }
