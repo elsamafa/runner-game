@@ -64,17 +64,45 @@ Game.prototype._startLoop = function () {
   var self = this;
 
   self.character = new Character(self.canvasElement);
-  self.obstacle = new Obstacles(self.canvasElement);
+  self.obstacles = [];
   function loop() {
+    self._clearAll();
+    self._updateAll();
     self._renderAll();
+
   }
 
   requestAnimationFrame(loop);
+}
+
+Game.prototype._updateAll = function () {
+  var self = this;
+
+  self.obstacles.forEach(function(item) {
+    item.update();
+  })
+}
+
+Game.prototype._clearAll = function ()  {
+  var self = this;
+
+  self.ctx.clearRect(0, 0, self.width, self.height);
 }
 
 Game.prototype._renderAll = function ()  {
   var self = this;
 
   self.character.render();
-  self.obstacle.render();
+  self.obstacles.forEach(function(item) {
+    item.render();
+  });
+}
+
+Game.prototype._spawnEnemy = function ()  {
+  var self = this;
+
+  if (Math.random() > 0.97) {
+    var randomX = Math.random() * self.height * 0.8;
+    self.enemies.push(new Enemy(self.canvasElement, self.width, randomX));
+  }
 }
