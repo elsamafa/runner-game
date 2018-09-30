@@ -3,11 +3,13 @@
 function Game(parent){
   var self = this;
 
+  self.character = null;
+
   self.parentElement = parent;
   self.gameElement = null;
   
   self._init();
-
+  self._startLoop();
 }
 
 Game.prototype._init = function () {
@@ -44,6 +46,7 @@ Game.prototype._init = function () {
   self.buildScore();
 }
 
+//Timer
 Game.prototype.buildScore = function (){
   var self = this;
 
@@ -54,4 +57,28 @@ Game.prototype.buildScore = function (){
  
   }, 1000);
   intervalID;
+}
+
+//Loop
+Game.prototype._startLoop = function () {
+  var self = this;
+
+  self.character = new Character(self.canvasElement);
+
+  function loop() {
+    self._renderAll();
+  }
+
+  requestAnimationFrame(loop);
+}
+
+
+
+
+
+Game.prototype._renderAll = function ()  {
+  var self = this;
+
+  self.character.render();
+
 }
