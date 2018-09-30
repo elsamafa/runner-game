@@ -1,24 +1,23 @@
 'use strict';
 
-function Game(parent) {
+function Game(parent){
   var self = this;
 
   self.parentElement = parent;
-  self.gameElement = null
-  self.onGameOverCallback = null;
-
+  self.gameElement = null;
+  
   self._init();
+
 }
 
 Game.prototype._init = function () {
   var self = this;
 
   self.gameElement = buildDom(`
-    <main class="game container">
-      <header class="game__header"> 
+    <main class = "game container">
+      <header class="game__header">
         <div class="score">
           <span class="label">Score:</span>
-          <span class="value"></span>
         </div>
       </header>
       <div class="game__canvas">
@@ -31,8 +30,7 @@ Game.prototype._init = function () {
   self.canvasParentElement = document.querySelector('.game__canvas');
   self.canvasElement = document.querySelector('.canvas');
 
-  self.livesElement = self.gameElement.querySelector('.lives .value');
-  self.scoreElement = self.gameElement.querySelector('.score .value');
+  self.scoreElement = self.gameElement.querySelector('.score .label');
 
   self.width = self.canvasParentElement.clientWidth;
   self.height = self.canvasParentElement.clientHeight;
@@ -41,4 +39,5 @@ Game.prototype._init = function () {
   self.canvasElement.setAttribute('height', self.height);
 
   self.ctx = self.canvasElement.getContext('2d');
+
 }
