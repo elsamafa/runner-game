@@ -31,6 +31,7 @@ Game.prototype._init = function () {
   self.canvasElement = document.querySelector('.canvas');
 
   self.scoreElement = self.gameElement.querySelector('.score .label');
+  
 
   self.width = self.canvasParentElement.clientWidth;
   self.height = self.canvasParentElement.clientHeight;
@@ -40,4 +41,17 @@ Game.prototype._init = function () {
 
   self.ctx = self.canvasElement.getContext('2d');
 
+  self.buildScore();
+}
+
+Game.prototype.buildScore = function (){
+  var self = this;
+
+  self.counter = 0;
+  var intervalID = setInterval(function () {
+    self.counter++;
+    return console.log(self.counter); 
+ 
+  }, 1000);
+  intervalID;
 }
