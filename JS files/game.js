@@ -5,6 +5,7 @@ function Game(parent){
 
   self.character = null;
   self.obstacles = null;
+  self.floor = null;
 
   self.parentElement = parent;
   self.gameElement = null;
@@ -53,7 +54,6 @@ Game.prototype.buildScore = function (){
 
   self.counter = 1;
   var intervalID = setInterval(function () {
-    self.scoreElement.innerText=self.counter;
     self.counter++; 
   }, 1000);
   intervalID;
@@ -64,14 +64,25 @@ Game.prototype._startLoop = function () {
   var self = this;
 
   self.character = new Character(self.canvasElement);
-  self.obstacles = new Obstacles(self.canvasElement);;
+  self.obstacles = new Obstacles(self.canvasElement);
+  self.floor = new Floor(self.canvasElement);
 
+
+  self.handleSpaceBarDown = function (e) {
+    if(e.keyCode === 32){
+      e.preventDefault();
+      self.character.setImpulse(-50);  
+    } 
+  }
+
+  document.addEventListener('keydown', self.handleSpaceBarDown)
 
   function loop() {
     self._clearAll();
     self._updateAll();
     self._renderAll();
 
+    requestAnimationFrame(loop)
   }
 
   requestAnimationFrame(loop);
@@ -81,7 +92,8 @@ Game.prototype._updateAll = function () {
   var self = this;
 
   //self.obstacles.item.update();
-
+  self.character.update();
+  //self.floor.update();
   self._updateUI();
 }
 
@@ -95,7 +107,7 @@ Game.prototype._updateUI = function () {
 Game.prototype._clearAll = function ()  {
   var self = this;
 
-  self.ctx.clearRect(0, 300, self.width, self.height);
+  self.ctx.clearRect(0, 0, self.width, self.height);
 }
 
 Game.prototype._renderAll = function ()  {
@@ -103,5 +115,6 @@ Game.prototype._renderAll = function ()  {
 
   self.character.render();
   self.obstacles.render();
+  self.floor.render();
 }
 

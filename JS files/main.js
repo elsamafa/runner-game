@@ -14,6 +14,7 @@ function main() {
   var splashElement = null;
 
   var handleSplashSpace = function (e) {
+    e.preventDefault()
     if(e.keyCode == 32){
       destroySplash();
       buildGame();
