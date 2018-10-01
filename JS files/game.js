@@ -4,6 +4,7 @@ function Game(parent){
   var self = this;
 
   self.character = null;
+  self.obstacles = null;
 
   self.parentElement = parent;
   self.gameElement = null;
@@ -19,7 +20,7 @@ Game.prototype._init = function () {
     <main class = "game container">
       <header class="game__header">
         <div class="score">
-          <span class="label">Score:</span>
+          <span class="label"></span>
         </div>
       </header>
       <div class="game__canvas">
@@ -50,11 +51,10 @@ Game.prototype._init = function () {
 Game.prototype.buildScore = function (){
   var self = this;
 
-  self.counter = 0;
+  self.counter = 1;
   var intervalID = setInterval(function () {
-    self.counter++;
-    return console.log(self.counter); 
- 
+    self.scoreElement.innerText=self.counter;
+    self.counter++; 
   }, 1000);
   intervalID;
 }
@@ -64,7 +64,9 @@ Game.prototype._startLoop = function () {
   var self = this;
 
   self.character = new Character(self.canvasElement);
-  self.obstacles = [];
+  self.obstacles = new Obstacles(self.canvasElement);;
+
+
   function loop() {
     self._clearAll();
     self._updateAll();
@@ -78,31 +80,28 @@ Game.prototype._startLoop = function () {
 Game.prototype._updateAll = function () {
   var self = this;
 
-  self.obstacles.forEach(function(item) {
-    item.update();
-  })
+  //self.obstacles.item.update();
+
+  self._updateUI();
+}
+
+Game.prototype._updateUI = function () {
+
+  var self = this;
+  self.scoreElement.innerText = self.counter;
+
 }
 
 Game.prototype._clearAll = function ()  {
   var self = this;
 
-  self.ctx.clearRect(0, 0, self.width, self.height);
+  self.ctx.clearRect(0, 300, self.width, self.height);
 }
 
 Game.prototype._renderAll = function ()  {
   var self = this;
 
   self.character.render();
-  self.obstacles.forEach(function(item) {
-    item.render();
-  });
+  self.obstacles.render();
 }
 
-Game.prototype._spawnEnemy = function ()  {
-  var self = this;
-
-  if (Math.random() > 0.97) {
-    var randomX = Math.random() * self.height * 0.8;
-    self.enemies.push(new Enemy(self.canvasElement, self.width, randomX));
-  }
-}

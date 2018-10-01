@@ -3,7 +3,7 @@
 function Obstacles(canvas) {
   var self = this;
 
-  self.x = 200;
+  self.x = 300;
   self.y = 300;
   self.height = 30;
   self.width = 30;
@@ -22,5 +22,5 @@ Obstacles.prototype.render = function () {
 Obstacles.prototype.update = function () {
   var self = this;
 
-  self.x -= self.vel;
+  self.x -= self.speed;
 }
