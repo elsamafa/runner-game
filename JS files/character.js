@@ -7,24 +7,21 @@ function Character(canvas) {
 
   self.x = 10;
   self.y = 270;
-  self.height = 75;
-  self.width = 100;
+  self.height = 60;
+  self.width = 60;
   self.acc = 0.1;
   self.vel = 30;
   self.impulse = 0;
 
-  self.img = document.createElement('img');
-  self.img.src = "./images/01051542_Flying_totoro.png";
+  /*self.img = document.createElement('img');
+  self.img.src = "./images/01051542_Flying_totoro.png";*/
 }
 
 Character.prototype.render = function () {
   var self = this;
-  /*self.ctx.fillStyle = "black";
-  self.ctx.fillRect(self.x, self.y, self.height, self.width);*/
-  //self.img = new Image();
-  //self.img.src = "../images/flying_totoro(3).png"
-  self.ctx.drawImage(self.img,self.x,self.y, self.width,self.height);
-  //self.ctx.drawImage(self.img, self.x,self.y,self.height,self.width);*/
+  self.ctx.fillStyle = "black";
+  self.ctx.fillRect(self.x, self.y, self.height, self.width);
+  //self.ctx.drawImage(self.img,self.x,self.y, self.width,self.height);
 }
 
 
