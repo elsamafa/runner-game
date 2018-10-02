@@ -51,16 +51,19 @@ Character.prototype.setImpulse = function (imp) {
 }
 
 
-Character.prototype.checkCollision = function (object) {
+Character.prototype.checkCollision = function (obstacle) {
   var self = this;
+  
+  var crashRight = self.x + self.width > obstacle.x;
+  var crashBottom = self.y + self.height > obstacle.y;
+  var crashTop = self.y < obstacle.y + obstacle.height;
+  var crashLeft = self.x < obstacle.x + obstacle.width;
 
-  var crashRight = self.x + self.size > object.x;
-  var crashBottom = self.y + self.size > object.y;
-  var crashTop = self.y < 240;
-
-
-
-  return false;
+  if (crashRight && crashBottom && crashLeft & crashTop) {
+    return true;
+  }else {
+    return false;
+  }
 }
 
 

@@ -25,3 +25,9 @@ Obstacles.prototype.update = function () {
   self.x -= self.vel;
  
 }
+
+/*Obstacles.prototype.isDeath = function () {
+  var self = this;
+
+  return (self.x + self.size) < 0;
+}*/

@@ -5,6 +5,8 @@ function Game(parent){
 
   self.parentElement = parent;
   self.gameElement = null;
+  self.onGameOverCallback = null;
+  self.isGameOver = false;
   
   self._init();
   self._startLoop();
@@ -86,8 +88,13 @@ Game.prototype._startLoop = function () {
     self._clearAll();
     self._updateAll();
     self._renderAll();
+    self._checkAllCollision();
 
-    requestAnimationFrame(loop)
+    if (!self.isGameOver){
+      requestAnimationFrame(loop)
+    } else {
+      self.onGameOverCallback();
+    }
   }
 
   requestAnimationFrame(loop);
@@ -111,6 +118,7 @@ Game.prototype._updateAll = function () {
   });  
   
   self.character.update();
+
   self._updateUI();
 }
 
@@ -137,8 +145,26 @@ Game.prototype._renderAll = function ()  {
   
   self.floor.render();
 }
-/*Game.prototype._checkAllCollision = function() {
+Game.prototype._checkAllCollision = function() {
   var self = this;
 
+  self.obstacles.forEach(function(item, idx) {
+    if(self.character.checkCollision(item)) {
+      self.isGameOver = true;
+    }
+  });
+}
 
-}*/
+Game.prototype.onOver = function (callback) {
+  var self = this;
+
+  self.onGameOverCallback = callback;
+}
+
+Game.prototype.destroy = function () {
+  var self = this;
+
+  self.gameElement.remove();
+
+
+}

@@ -40,7 +40,6 @@ function main() {
 
   // -- Game
   var game = null;
-  var gameButton=null;
   var handleGameOver = function () {
     destroyGame();
     buildGameover();
@@ -48,12 +47,12 @@ function main() {
 
   function buildGame() {
     game = new Game(mainContainerElement);
+    game.onOver(handleGameOver);
 }
 
 
   function destroyGame() {
-    gameButton.removeEventListener('click', handleGameOver);
-    game.remove();
+    game.destroy();
   }
 
   // -- Gameover
