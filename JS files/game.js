@@ -71,7 +71,14 @@ Game.prototype._startLoop = function () {
     } 
   }
 
-  //boolean
+  self.handleSpaceBar = function (evt) {
+    if(e.keyCode===32){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   document.addEventListener('keydown', self.handleSpaceBarDown)
 
