@@ -42,7 +42,7 @@ function main() {
   var game = null;
   var handleGameOver = function () {
     destroyGame();
-    buildGameover();
+    buildGameover(game.counter);
   };
 
   function buildGame() {
@@ -68,7 +68,7 @@ function main() {
     gameoverElement = buildDom(`
       <main class="gameover container">
         <h1>Game over</h1>
-        <p>Your score: <span class="score"></span></p>
+        <p>Your score <span class="score"></span></p>
         <button>Restart</button>
       </main>
     `);
