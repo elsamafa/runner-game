@@ -3,11 +3,11 @@
 function Obstacles(canvas) {
   var self = this;
 
-  self.x = 300;
+  self.x = 702;
   self.y = 300;
   self.height = 30;
   self.width = 30;
-  self.speed = 5;
+  self.vel = 5;
   self.ctx = canvas.getContext('2d');
 
 }
@@ -22,5 +22,6 @@ Obstacles.prototype.render = function () {
 Obstacles.prototype.update = function () {
   var self = this;
 
-  self.x -= self.speed;
+  self.x -= self.vel;
+ 
 }

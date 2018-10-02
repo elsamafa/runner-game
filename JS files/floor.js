@@ -4,9 +4,9 @@ function Floor (canvas) {
   var self = this;
 
   self.x = 0;
-  self.y = 270;
-  self.width = 600;
-  self.height = 300; 
+  self.y = 330;
+  self.width = 300;
+  self.height = 720; 
   self.ctx = canvas.getContext('2d');
 }
 

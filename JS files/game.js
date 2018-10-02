@@ -3,10 +3,6 @@
 function Game(parent){
   var self = this;
 
-  self.character = null;
-  self.obstacles = null;
-  self.floor = null;
-
   self.parentElement = parent;
   self.gameElement = null;
   
@@ -63,17 +59,19 @@ Game.prototype.buildScore = function (){
 Game.prototype._startLoop = function () {
   var self = this;
 
+  self.obstacles = [];
   self.character = new Character(self.canvasElement);
-  self.obstacles = new Obstacles(self.canvasElement);
   self.floor = new Floor(self.canvasElement);
 
 
   self.handleSpaceBarDown = function (e) {
     if(e.keyCode === 32){
       e.preventDefault();
-      self.character.setImpulse(-50);  
+      self.character.setImpulse(-10);  
     } 
   }
+
+  //boolean
 
   document.addEventListener('keydown', self.handleSpaceBarDown)
 
@@ -88,12 +86,24 @@ Game.prototype._startLoop = function () {
   requestAnimationFrame(loop);
 }
 
+Game.prototype._spawnObstacle = function ()  {
+  var self = this;
+
+  if (Math.random() > 0.99) {
+    var randomY = Math.random() * self.height * 0.5;
+    self.obstacles.push(new Obstacles(self.canvasElement, self.width, randomY));
+  }
+}
+
 Game.prototype._updateAll = function () {
   var self = this;
 
-  //self.obstacles.item.update();
+  self._spawnObstacle();
+  self.obstacles.forEach(function(item) {
+    item.update();
+  });  
+  
   self.character.update();
-  //self.floor.update();
   self._updateUI();
 }
 
@@ -114,7 +124,14 @@ Game.prototype._renderAll = function ()  {
   var self = this;
 
   self.character.render();
-  self.obstacles.render();
+  self.obstacles.forEach(function(item){
+    item.render();
+  })
+  
   self.floor.render();
 }
+/*Game.prototype._checkAllCollision = function() {
+  var self = this;
 
+
+}*/
