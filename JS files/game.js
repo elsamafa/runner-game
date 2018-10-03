@@ -53,7 +53,7 @@ Game.prototype.buildScore = function (){
   self.counter = 1;
   var intervalID = setInterval(function () {
     self.counter++; 
-  }, 1000);
+  }, 500);
   intervalID;
 }
 
@@ -63,32 +63,37 @@ Game.prototype._startLoop = function () {
 
   self.obstacles = [];
   self.character = new Character(self.canvasElement);
-  self.floor = new Floor(self.canvasElement);
+  self.audio = new Audio("./images/Cartoon Hop-SoundBible.com-553158131.mp3");
+  //self.floor = new Floor(self.canvasElement);
 
 
-  self.handleSpaceBarDown = function (e) {
+  self.handleSpaceBarUpDown = function (e) {
     if(e.keyCode === 32){
       e.preventDefault();
-      self.character.setImpulse(-10);  
+      self.character.setImpulse(-10); 
+      self.audio.play(); 
+
+    } 
+  }
+  
+  self.handleSpaceBarUp = function (evt) {
+    if(e.keyCode===32){
+      
+      self.audio.pause();
+      self.audio.currentTime = 0;
     } 
   }
 
-  self.handleSpaceBar = function (evt) {
-    if(e.keyCode===32){
-      return true;
-    } else {
-      return false;
-    }
-  }
 
-
-  document.addEventListener('keydown', self.handleSpaceBarDown)
+  document.addEventListener('keydown', self.handleSpaceBarUpDown)
+  document.addEventListener('keyup', self.handleSpaceBarUp)
 
   function loop() {
     self._clearAll();
     self._updateAll();
     self._renderAll();
     self._checkAllCollision();
+    self._checkLimits();
 
     if (!self.isGameOver){
       requestAnimationFrame(loop)
@@ -105,7 +110,7 @@ Game.prototype._spawnObstacle = function ()  {
 
   if (Math.random() > 0.99) {
     var randomY = Math.random() * self.height * 0.5;
-    self.obstacles.push(new Obstacles(self.canvasElement, self.width, randomY));
+    self.obstacles.push(new Obstacles(self.canvasElement, randomY));
   }
 }
 
@@ -143,7 +148,7 @@ Game.prototype._renderAll = function ()  {
     item.render();
   })
   
-  self.floor.render();
+ // self.floor.render();
 }
 Game.prototype._checkAllCollision = function() {
   var self = this;
@@ -153,6 +158,14 @@ Game.prototype._checkAllCollision = function() {
       self.isGameOver = true;
     }
   });
+}
+
+Game.prototype._checkLimits = function(){
+  var self = this;
+
+  if (self.character.y > 630){
+    self.isGameOver = true;
+  }
 }
 
 Game.prototype.onOver = function (callback) {
