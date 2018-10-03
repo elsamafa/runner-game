@@ -79,9 +79,12 @@ h1, h2, h3, h4, h5, h6 {
   /*background-size: 69*/
 }
 
-/*--------Splash container------*/
+/*--------Game container------*/
 
-
+.totoro-game{
+  width: 50%;
+  padding: 40px 0;
+}
 
 /*----------Game Over---------*/
 
