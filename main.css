@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .totoro-game{
   width: 50%;
-  padding: 40px 0;
+  padding: 40px 0 0 0;
 }
 
 /*----------Game Over---------*/

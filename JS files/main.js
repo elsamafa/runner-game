@@ -25,7 +25,7 @@ function main() {
     splashElement = buildDom(`
       <main class="splash container">
         <h1 class="splash__title">Flappy Totoro</h1>
-        <img class="totoro-game" src="./images/transparent-gif-totoro-3.gif" alt="Mini Totoro">
+        <img class="totoro-game" src="./images/totoro2.gif" alt="Mini Totoro">
         <h2>Press Spacebar to begin</h2>
       </main>
     `)
