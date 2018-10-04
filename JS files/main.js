@@ -27,6 +27,7 @@ function main() {
         <h1 class="splash__title">Flappy Totoro</h1>
         <img class="totoro-game" src="./images/totoro2.gif" alt="Mini Totoro">
         <h2>Press Spacebar to begin</h2>
+        <audio src="./images/pwaa-the-steel-samurai-theme.mp3" autoplay></audio>
       </main>
     `)
     mainContainerElement.appendChild(splashElement);
@@ -72,6 +73,7 @@ function main() {
         <p>Your score <span class="score"></span></p>
         <img class="small-totoro" src="./images/minitororo.gif" alt="Mini Totoros">
         <button>Restart</button>
+        <audio src="./images/8-bit-my-neighbour-totoro-song.mp3" autoplay></audio>
       </main>
     `);
     mainContainerElement.appendChild(gameoverElement);

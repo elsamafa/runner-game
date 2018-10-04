@@ -25,6 +25,7 @@ Game.prototype._init = function () {
       <div class="game__canvas">
         <canvas class="canvas"></canvas>
       </div>
+      <audio src="./images/pwaa-the-steel-samurai-theme.mp3" autoplay></audio>
     </main>
   `)
   self.parentElement.appendChild(self.gameElement);
