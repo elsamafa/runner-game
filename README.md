@@ -128,15 +128,15 @@ Task definition in order of priority
 
 
 ### Trello
-[Link url](https://trello.com)
+[Link url](https://trello.com/b/iln7sipT/ironhack-project-1)
 
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](http://github.com)
-[Link Deploy](http://github.com)
+[Link Repo](https://github.com/resa92/runner-game)
+[Link Deploy](https://resa92.github.io/runner-game/)
 
 
 ### Slides
 URls for the project presentation (slides)
-[Link Slides.com](http://slides.com)
+[Link Slides.com](https://slides.com/elsamartinezfaucard/my-name-is-elsa/fullscreen)
